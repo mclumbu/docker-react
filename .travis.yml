@@ -9,3 +9,13 @@ before_install:
 
 script:
   - docker run -e CI=true sledgersexpress/docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "frontend"
+  env: "Frontend-env"
+  bucket_name: "elasticbeanstalk-us-east-2-701939213256"
+  bucket_path: "frontend"
+  on:
+    branch: main
